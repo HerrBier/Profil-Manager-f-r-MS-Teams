@@ -1,13 +1,13 @@
 # Profil-Manager für Microsoft Teams
 
 Funktionen: 
-* gleichzeitiges Nutzen der Teams-App unter Windows im Schul- und Lehrer-Tenant
+* gleichzeitiges Nutzen der Teams-App unter Windows in verschiedenen Accounts / Tenants
 * Nutzen des jeweils vollen Funktionsumfangs, z.B. Teilen einzelner Fenster, Besprechungssteuerung, OneDrive-Integration, etc. 
 * keine Neuanmeldung bei wechseln oder aufrufen des Profils nötig
 * auf Wunsch: automatisches Starten von Teams mit Windows
-* für Lehrkräfte an mehreren Schulen: Anlegen weiterer Profile problemlos möglich
+* Anlegen eigener Profile
 * Keine Installation nötig
-* Einfache Einrichtung (Anleitung als Text und Video vorhanden). 
+
 
 
 ## Built With
