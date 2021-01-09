@@ -25,7 +25,7 @@ Funktionen:
 ## Authors
 
 * **Cleriton Cunha** - *Initial work* - [TonCunha](https://github.com/TonCunha)
-* **Florian Bier** - Fork - [Herr Bier] (https://github.com/HerrBier)
+* **Florian Bier** - Fork - [Herr Bier](https://github.com/HerrBier)
 
 ## License
 
