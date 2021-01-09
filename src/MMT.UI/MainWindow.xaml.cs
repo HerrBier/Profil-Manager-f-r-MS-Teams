@@ -113,22 +113,6 @@ namespace MMT.UI
         {
             chkAutoStart.IsChecked = _registryManager.IsApplicationInStartup(StaticResources.AppName);
 
-            //if (chkAutoStart.IsChecked.HasValue && chkAutoStart.IsChecked.Value)
-            //{
-            //   Show();
-            //   WindowState = WindowState.Minimized;
-            //    MetroWindow_StateChanged(null, null);
-            //   Visibility = Visibility.Visible;
-            //    _tray.Visibility = Visibility.Visible;
-
-            //    var thread = new Thread(() =>
-            //    {
-            //        foreach (var item in lstProfiles.Items)
-            //            if (!item.ToString().StartsWith("[Deaktiviert]"))
-            //                _teamsLauncher.Start(item.ToString());
-            //    });
-            //    thread.Start();
-            //}
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e)
