@@ -27,7 +27,46 @@ namespace MMT.UI
             _registryManager = new RegistryManager();
             ChangeTabVisibility();
             CreateTray();
+            Silent();
             AutoStartCheck();
+        }
+
+        private void Silent()
+        {
+            string[] parameters = Environment.GetCommandLineArgs();
+            if (parameters.Length > 1 && parameters[1].Contains("silent"))
+                {
+                    Show();
+                    WindowState = WindowState.Minimized;
+                    _tray.Visibility = Visibility.Visible;
+                    Visibility = Visibility.Collapsed;
+
+                try
+                {
+                    var thread = new Thread(() =>
+                    {
+                        foreach (var item in lstProfiles.Items)
+                            if (!item.ToString().StartsWith("[Deaktiviert]"))
+                                _teamsLauncher.Start(item.ToString());
+                    });
+                    thread.Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageHelper.Info(ex.Message);
+                    txtProfileName.Focus();
+                }
+
+                    this.Close();
+                }
+            else
+            {
+                Show();
+                WindowState = WindowState.Normal;
+                _tray.Visibility = Visibility.Collapsed;
+                Visibility = Visibility.Visible;
+            }
+
         }
 
         private void ChangeTabVisibility()
@@ -74,29 +113,31 @@ namespace MMT.UI
         {
             chkAutoStart.IsChecked = _registryManager.IsApplicationInStartup(StaticResources.AppName);
 
-            if (chkAutoStart.IsChecked.HasValue && chkAutoStart.IsChecked.Value)
-            {
-                Show();
-                WindowState = WindowState.Minimized;
-                MetroWindow_StateChanged(null, null);
+            //if (chkAutoStart.IsChecked.HasValue && chkAutoStart.IsChecked.Value)
+            //{
+            //   Show();
+            //   WindowState = WindowState.Minimized;
+            //    MetroWindow_StateChanged(null, null);
+            //   Visibility = Visibility.Visible;
+            //    _tray.Visibility = Visibility.Visible;
 
-                var thread = new Thread(() =>
-                {
-                    foreach (var item in lstProfiles.Items)
-                        if (!item.ToString().StartsWith("[Disabled]"))
-                            _teamsLauncher.Start(item.ToString());
-                });
-                thread.Start();
-            }
+            //    var thread = new Thread(() =>
+            //    {
+            //        foreach (var item in lstProfiles.Items)
+            //            if (!item.ToString().StartsWith("[Deaktiviert]"))
+            //                _teamsLauncher.Start(item.ToString());
+            //    });
+            //    thread.Start();
+            //}
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e)
         {
             if (WindowState == WindowState.Minimized)
             {
-                Visibility = Visibility.Collapsed;
-                _tray.Visibility = Visibility.Visible;
-                _tray.ShowBalloonTip(StaticResources.AppName, "This app is running", BalloonIcon.Info);
+                Visibility = Visibility.Visible;    //Visibility = Visibility.Collapsed;
+                _tray.Visibility = Visibility.Collapsed;
+                // _tray.ShowBalloonTip(StaticResources.AppName, "Dieses Programm läuft im Hintergrund.", BalloonIcon.Info);
             }
             else
             {
@@ -142,8 +183,27 @@ namespace MMT.UI
         {
             try
             {
-                if (lstProfiles.SelectedItem != null && !lstProfiles.SelectedItem.ToString().StartsWith("[Disabled]"))
+                if (lstProfiles.SelectedItem != null && !lstProfiles.SelectedItem.ToString().StartsWith("[Deaktiviert]"))
                     _teamsLauncher.Start(lstProfiles.SelectedItem.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Info(ex.Message);
+                txtProfileName.Focus();
+            }
+        }
+
+        private void BtnLaunchAllTeams_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var thread = new Thread(() =>
+                {
+                    foreach (var item in lstProfiles.Items)
+                        if (!item.ToString().StartsWith("[Deaktiviert]"))
+                            _teamsLauncher.Start(item.ToString());
+                });
+                thread.Start();
             }
             catch (Exception ex)
             {
@@ -157,7 +217,7 @@ namespace MMT.UI
             if (e.Key == Key.Delete)
             {
                 string selectedProfile = lstProfiles.SelectedItem.ToString();
-                if (await MessageHelper.Confirm(string.Format("Delete profile?\nProfile name: {0}", selectedProfile)) == MessageDialogResult.Affirmative)
+                if (await MessageHelper.Confirm(string.Format("Profil löschen?\nProfilname: {0}", selectedProfile)) == MessageDialogResult.Affirmative)
                 {
                     _profileManager.Delete(selectedProfile);
                     LoadProfiles();
@@ -173,12 +233,14 @@ namespace MMT.UI
         private async void LstProfiles_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             string selectedProfile = lstProfiles.SelectedItem.ToString();
-            if (selectedProfile.StartsWith("[Disabled]"))
+            if (selectedProfile.StartsWith("[Deaktiviert]"))
                 _profileManager.Enable(selectedProfile);
-            else if (await MessageHelper.Confirm(string.Format("Disable profile?\nProfile name: {0}", selectedProfile)) == MessageDialogResult.Affirmative)
+            else if (await MessageHelper.Confirm(string.Format("Profil deaktivieren?\nProfilname: {0}", selectedProfile)) == MessageDialogResult.Affirmative)
                 _profileManager.Disable(selectedProfile);
 
             LoadProfiles();
         }
+
+     
     }
 }

@@ -7,7 +7,7 @@ namespace MMT.UI
 {
     public class MessageHelper
     {
-        private static readonly string _title = "Multi MS Teams";
+        private static readonly string _title = "Profil-Manager für MS Teams";
 
         public static async void Info(string message)
         {

@@ -4,18 +4,18 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>Multi MS Teams</AssemblyName>
+    <AssemblyName>Profil-Manager für MS Teams</AssemblyName>
     <ApplicationIcon>Taskbar.ico</ApplicationIcon>
-    <Authors>Cleriton Cunha</Authors>
-    <Company />
-    <RepositoryUrl>https://github.com/TonCunha/multi-microsoft-teams</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/TonCunha/multi-microsoft-teams</PackageProjectUrl>
-    <Copyright>Cleriton Cunha</Copyright>
-    <Description>Launcher to manage profiles and open multiple instances of Microsoft Teams desktop version. It's compatible with many accounts and organizations (tenants).</Description>
+    <Authors>Florian Bier (Fork von Cleriton Cunha)</Authors>
+    <Company>BBS</Company>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Copyright>Florian Bier (Fork von Cleriton Cunha)</Copyright>
+    <Description>Profil-Manager für Microsoft Teams. Fork von "Multi Microsoft Teams".</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.0.0.3</AssemblyVersion>
-    <FileVersion>1.0.0.3</FileVersion>
-    <Version>1.0.0.3</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0.0</Version>
     <Win32Resource />        
   </PropertyGroup>
 
