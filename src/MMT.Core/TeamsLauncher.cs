@@ -9,7 +9,7 @@ namespace MMT.Core
         public void Start(string profileName)
         {
             if (string.IsNullOrWhiteSpace(profileName))
-                throw new ArgumentNullException("Profile name is required.");
+                throw new ArgumentNullException("Profilename ist erforderlich.");
 
             string oldUserProfile = StaticResources.UserProfile;
             string userProfile = Path.Combine(StaticResources.LocalAppData, StaticResources.CustomProfiles, profileName);

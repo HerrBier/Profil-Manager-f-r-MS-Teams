@@ -29,7 +29,7 @@ namespace MMT.Core
             foreach (var profile in allProfiles)
             {
                 if (disabledProfiles.Any(p => p == profile))
-                    profiles.Add($"[Disabled] {profile}");
+                    profiles.Add($"[Deaktiviert] {profile}");
                 else
                     profiles.Add(profile);
             }
@@ -40,10 +40,10 @@ namespace MMT.Core
         public void Save(string profileName)
         {
             if (string.IsNullOrWhiteSpace(profileName))
-                throw new ArgumentException("Profile name is required.");
+                throw new ArgumentException("Profilename ist erforderlich.");
 
             if (GetProfiles().Any(p => p.ToUpper().Equals(profileName.ToUpper())))
-                throw new ArgumentException("This profile already exists.");
+                throw new ArgumentException("Dieses Profil existiert bereits.");
 
             Directory.CreateDirectory(Path.Combine(_customProfilesPath, profileName));
             Directory.CreateDirectory(Path.Combine(_customProfilesPath, profileName, "Desktop"));
@@ -75,7 +75,7 @@ namespace MMT.Core
 
         public void Enable(string profileName)
         {
-            profileName = profileName.Replace("[Disabled] ", string.Empty);
+            profileName = profileName.Replace("[Deaktiviert] ", string.Empty);
             var disabledProfiles = GetDisabledProfiles();
             disabledProfiles.Remove(profileName);
             using var sw = new StreamWriter(_disabledProfilesPath);

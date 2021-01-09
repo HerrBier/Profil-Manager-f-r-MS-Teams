@@ -19,7 +19,7 @@ namespace MMT.Core
 
         public void AddApplicationInStartup(string name)
         {
-            _registryKey.SetValue(name, Process.GetCurrentProcess().MainModule.FileName);
+            _registryKey.SetValue(name, Process.GetCurrentProcess().MainModule.FileName +" -silent");
         }
 
         public void RemoveApplicationFromStartup(string appName)

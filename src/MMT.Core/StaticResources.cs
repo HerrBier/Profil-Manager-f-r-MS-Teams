@@ -56,7 +56,7 @@ namespace MMT.Core
         {
             get
             {
-                return "Multi MS Teams";
+                return "Profil-Manager für MS Teams";
             }
         }
     }
