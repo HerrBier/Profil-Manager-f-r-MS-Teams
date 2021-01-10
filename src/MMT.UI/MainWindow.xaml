@@ -14,7 +14,11 @@
 
         <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="10">
             <Hyperlink NavigateUri="https://stadtnbg-my.sharepoint.com/:b:/g/personal/florian_bier_schulen_nuernberg_de/ERoBEDCwIQFMoZ7PkzkoPuABdk4do9A17GEF_VxEEHEB2g?e=5iUkAU" RequestNavigate="Hyperlink_RequestNavigate">
-                ?
+                Anleitung
+            </Hyperlink>
+             - 
+            <Hyperlink NavigateUri="https://github.com/HerrBier/Profil-Manager-f-r-MS-Teams/" RequestNavigate="Hyperlink_RequestNavigate">
+                GitHub
             </Hyperlink>
         </TextBlock>
 
