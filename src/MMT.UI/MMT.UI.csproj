@@ -8,8 +8,8 @@
     <ApplicationIcon>Taskbar.ico</ApplicationIcon>
     <Authors>Florian Bier (Fork von Cleriton Cunha)</Authors>
     <Company>BBS</Company>
-    <RepositoryUrl></RepositoryUrl>
-    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HerrBier/Profil-Manager-f-r-MS-Teams/</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/HerrBier/Profil-Manager-f-r-MS-Teams/</PackageProjectUrl>
     <Copyright>Florian Bier (Fork von Cleriton Cunha)</Copyright>
     <Description>Profil-Manager für Microsoft Teams. Fork von "Multi Microsoft Teams".</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
